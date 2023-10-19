@@ -11,27 +11,48 @@ using namespace std;
 class Solution{
   public:
      // Function to find majority element in the array
-    // a: input array
-    // size: size of input array
+   
     int majorityElement(int v[], int size)
     {
       
-    map<int, int> mpp;
-
-    //storing the elements with its occurnce:
-    for (int i = 0; i < size; i++) {
-        mpp[v[i]]++;
-    }
-
-    //searching for the majority element:
-    for (auto it : mpp) {
-        if (it.second > (size/ 2)) {
-            return it.first;
-        }
-    }
-
-    return -1;
+    // map<int, int> mpp;
+    // //storing the elements with its occurnce:
+    // for (int i = 0; i < size; i++) {
+    //     mpp[v[i]]++;
+    // }
+    // //searching for the majority element:
+    // for (auto it : mpp) {
+    //     if (it.second > (size/ 2)) {
+    //         return it.first;
+    //     }
+    // }
+    // return -1;
         
+        int candidate=0,count=0;
+        for(int i=0;i<size;i++)
+        {
+            if(count==0)
+            {
+                candidate=v[i];
+            }
+            if(candidate==v[i])
+            {
+                count++;
+            }
+            else count--;
+        }
+        //to verify
+        int count2=0;
+        for(int i=0;i<size;i++)
+        {
+            if(v[i]==candidate)
+            count2++;
+        }
+        if(count2>(size/2))
+        return candidate;
+        
+       else
+       return -1;
     }
 };
 
